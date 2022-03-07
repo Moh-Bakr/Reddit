@@ -63,8 +63,8 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('communities.create') }}">
-                                    {{ __('Create a community') }}
+                                <a class="dropdown-item" href="{{ route('communities.index') }}">
+                                    {{ __('My Communities') }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
