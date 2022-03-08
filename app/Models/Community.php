@@ -11,7 +11,7 @@ class Community extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
-    protected $fillable = ['user_id', 'name', 'description' ,'slug'];
+    protected $fillable = ['user_id', 'name', 'description', 'slug'];
 
 
     public function topics()
@@ -24,7 +24,7 @@ class Community extends Model
      *
      * @return array
      */
-    public function sluggable() :array
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -36,5 +36,10 @@ class Community extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }
