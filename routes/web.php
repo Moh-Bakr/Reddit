@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\CommunityPostController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,8 +13,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('communities', App\Http\Controllers\CommunityController::class);
-    Route::resource('communities.posts', \App\Http\Controllers\CommunityPostController::class);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('communities', CommunityController::class);
+    Route::resource('communities.posts', CommunityPostController::class);
+    Route::get('posts/{post_id}/vote/{vote}', [CommunityPostController::class, 'vote'])->name('post.vote');
 });
 
