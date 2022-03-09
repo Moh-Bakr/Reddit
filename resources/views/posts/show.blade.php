@@ -19,6 +19,28 @@
                         @endif
                         {{ $post->post_text }}
                         @auth
+                            <hr/>
+                            <h3>Comments</h3>
+                            @forelse ($post->comments as $comment)
+                                <b>{{ $comment->user->name }}</b>
+                                <b>{{ $comment->id }}</b>
+                                <br/>
+                                <p class="mt-2">{{ $comment->comment_text }}</p>
+                                {{ $comment->created_at->diffForHumans() }}
+                                <br>
+                                <hr>
+                            @empty
+                                No comments yet.
+                            @endforelse
+                            <form method="POST" action="{{ route('posts.comments.store', $post) }}">
+                                @csrf
+                                Add a comment:
+                                <br/>
+                                <textarea class="form-control" name="comment_text" rows="5" required></textarea>
+                                <br/>
+                                <button type="submit" class="btn btn-sm btn-primary">Add Comment</button>
+                            </form>
+
                             @if ($post->user_id == auth()->id())
                                 <hr/>
                                 <a href="{{ route('communities.posts.edit', [$community, $post])}}"
