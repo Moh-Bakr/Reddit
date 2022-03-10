@@ -13,7 +13,7 @@
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}
                         *</label>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-4">
                         <input id="name" type="text"
                                class="form-control @error('name') is-invalid @enderror" name="name"
                                value="{{ $community->name }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row mb-4">
                     <label for="description"
                            class="col-md-4 col-form-label text-md-right">{{ __('Description') }}*</label>
 
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row mb-4">
                     <label for="topics"
                            class="col-md-4 col-form-label text-md-right">{{ __('Topics') }}</label>
 

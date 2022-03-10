@@ -35,9 +35,10 @@ class CommunityController extends Controller
     }
 
 
-    public function show(Community $community)
+    public function show($slug)
     {
-        $query = $community->posts();
+        $community = Community::where('slug',$slug)->firstorFail();
+        $query = $community->posts()->with('postVotes');
 
         if (request('sort', '') == 'popular') {
             $query->orderBy('votes', 'desc');

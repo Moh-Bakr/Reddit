@@ -12,35 +12,23 @@
                        @if (request('sort', '') == '') style="font-size: 20px" @endif>Newest posts</a>
                     <br/>
                     <a href="{{ route('communities.show', $community) }}?sort=popular"
-                       @if (request('sort', '') == 'popular') style="font-size: 20px" @endif>Popular
-                        posts</a>
+                       @if (request('sort', '') == 'popular') style="font-size: 20px" @endif>Popular posts</a>
                 </div>
             </div>
         </div>
+
         <div class="card-body">
             <a href="{{ route('communities.posts.create', $community) }}"
                class="btn btn-primary">Add Post</a>
             <br/><br/>
             @forelse ($posts as $post)
                 <div class="row">
-                    <div class="col-1 text-center">
-                        <div>
-                            <a href="{{ route('post.vote', [$post->id, 1])}}">
-                                <i class="fa fa-2x fa-sort-asc aria-hidden=true"></i>
-                            </a>
-                        </div>
-                        <div style="font-size: 24px; font-weight: bold">{{$post->votes}}</div>
-                        <div>
-                            <a href="{{ route('post.vote', [$post->id, -1])}}">
-                                <i class="fa fa-2x fa-sort-desc aria-hidden=true"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @livewire('post-votes', ['post' => $post])
                     <div class="col-11">
                         <a href="{{ route('communities.posts.show', [$community, $post]) }}">
                             <h2>{{ $post->title }}</h2>
                         </a>
-                        <p>{{$post->created_at->diffForHumans()}}</p>
+                        <p>{{ $post->created_at->diffForHumans() }}</p>
                         <p>{{ \Illuminate\Support\Str::words($post->post_text, 10) }}</p>
                     </div>
                 </div>

@@ -21,6 +21,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 <body>
 <div id="app">
@@ -129,5 +130,7 @@
         $('.select2').select2();
     });
 </script>
+@livewireScripts
+
 </body>
 </html>
