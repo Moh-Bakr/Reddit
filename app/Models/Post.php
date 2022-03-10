@@ -10,15 +10,8 @@ class Post extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        'community_id',
-        'user_id',
-        'title', '
-        post_text',
-        'post_image',
-        'post_url',
-        'votes',
-    ];
+    protected $fillable = ['community_id', 'user_id', 'title', 'post_text', 'post_image', 'post_url', 'votes'];
+
 
     public function community()
     {

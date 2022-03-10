@@ -14,6 +14,14 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+        User::factory([
+            'email' => 'admin@rivian.com',
+            'password' => bcrypt('adminpass'),
+            'email_verified_at' => now(),
+            'is_admin' => true
+        ])->create();
+
         User::factory()->times(100)->create();
+
     }
 }
