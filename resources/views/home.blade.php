@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">Most Popular Posts</div>
+        <div class="card-header">Popular Posts</div>
 
         <div class="card-body">
             @foreach ($posts as $post)
