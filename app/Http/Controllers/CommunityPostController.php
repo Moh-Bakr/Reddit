@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Models\Community;
 use App\Models\Post;
 use App\Models\PostVote;
+use App\Notifications\PostReportNotification;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -121,5 +122,14 @@ class CommunityPostController extends Controller
         }
         return redirect()->route('communities.show', $post->community);
 
+    }
+
+    public function report($post_id)
+    {
+        $post = Post::with('community.user')->findOrFail($post_id);
+
+//        $post->community->user->notify(new PostReportNotification($post));
+        return redirect()->route('communities.posts.show', [$post->community, $post])
+            ->with('message', 'Your report has been sent.');
     }
 }

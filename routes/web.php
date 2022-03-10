@@ -16,5 +16,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('communities.posts', CommunityPostController::class);
     Route::resource('posts.comments', PostCommentController::class);
     Route::get('posts/{post_id}/vote/{vote}', [CommunityPostController::class, 'vote'])->name('post.vote');
+    Route::post('posts/{post_id}/report', [CommunityPostController::class, 'report'])->name('post.report');
+
 });
 
