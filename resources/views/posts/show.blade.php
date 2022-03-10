@@ -39,11 +39,12 @@
                     <button type="submit" class="btn btn-sm btn-primary">Add Comment</button>
                 </form>
 
-                @if ($post->user_id == auth()->id())
+                    @if (in_array(auth()->id(),[$post->user_id, $post->community->user_id]))
                     <hr/>
-                    <a href="{{ route('communities.posts.edit', [$community, $post])}}"
-                       class="btn btn-sm btn-primary">Edit Post</a>
-
+                    @if($post->user_id == auth()->id())
+                        <a href="{{ route('communities.posts.edit', [$community, $post])}}"
+                           class="btn btn-sm btn-primary">Edit Post</a>
+                    @endif
                     <form action="{{ route('communities.posts.destroy', [$community,$post]) }}"
                           method="POST"
                           style="display: inline-block">
@@ -55,6 +56,7 @@
                             Delete Post
                         </button>
                     </form>
+                        
                 @endif
             @endauth
         </div>

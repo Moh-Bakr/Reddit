@@ -98,7 +98,7 @@ class CommunityPostController extends Controller
 
     public function destroy(Community $community, Post $post)
     {
-        if ($post->user_id != auth()->id()) {
+        if (!in_array(auth()->id(), [$post->user_id, $community->user_id])) {
             abort(403);
         }
 
