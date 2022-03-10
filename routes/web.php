@@ -9,7 +9,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
+// for automated testing
+//Route::get('c/{slug}',
+//    [CommunityController::class, 'show'])
+//    ->name('communities.show');
+//
+//Route::get('p/{postId}',
+//    [CommunityPostController::class, 'show'])
+//    ->name('communities.posts.show');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('communities', CommunityController::class);

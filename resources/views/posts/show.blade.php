@@ -25,8 +25,9 @@
                 @forelse ($post->comments as $comment)
                     <b>{{ $comment->user->name }}</b>
                     <br/>
-                    {{ $comment->created_at->diffForHumans() }}
                     <p class="mt-2">{{ $comment->comment_text }}</p>
+                    {{ $comment->created_at->diffForHumans() }}
+
                 @empty
                     No comments yet.
                 @endforelse
