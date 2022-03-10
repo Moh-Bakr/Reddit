@@ -7,14 +7,11 @@ use App\Http\Controllers\PostCommentController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('communities', CommunityController::class);
     Route::resource('communities.posts', CommunityPostController::class);
     Route::resource('posts.comments', PostCommentController::class);

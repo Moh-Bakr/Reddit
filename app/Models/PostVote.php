@@ -14,4 +14,9 @@ class PostVote extends Model
         'user_id',
         'vote'
     ];
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }
