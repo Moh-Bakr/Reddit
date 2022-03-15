@@ -1,6 +1,6 @@
 ### Rivian is a social media , web content rating, and discussion website,Registered members submit content to the site such as links, text posts, images,which are then voted up or down by other members.
 
-### The website Link : [Rivian](http://riviann.herokuapp.com/login)
+### The website Link : [Rivian](https://riviann.herokuapp.com/)
 
 #### 0. Home Page
 
